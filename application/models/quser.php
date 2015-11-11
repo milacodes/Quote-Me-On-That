@@ -37,9 +37,10 @@ class Quser extends CI_Model {
 		$this->form_validation->set_rules('alias', "Alias", "trim|required");
 		$this->form_validation->set_rules('password', "Password", "trim|required|min_length[8]");
 		$this->form_validation->set_rules('confirm', "Password Confirmation", "trim|required|matches[password]");
-		$this->form_validation->set_rules('month', "Month", "trim|required");
-		$this->form_validation->set_rules('day', "Day", "trim|required");
-		$this->form_validation->set_rules('year', "Year", "trim|required");
+		$this->form_validation->set_rules('birthday', "Birthday", "trim|required");
+		// $this->form_validation->set_rules('month', "Month", "trim|required");
+		// $this->form_validation->set_rules('day', "Day", "trim|required");
+		// $this->form_validation->set_rules('year', "Year", "trim|required");
 
 		if ($this->form_validation->run() === FALSE) {
 			
@@ -48,9 +49,9 @@ class Quser extends CI_Model {
 		}
 		else{
 			$this->session->set_flashdata("success", "You've completed registration. Now log in!");
-			$date = $post['year']."-".$post['month']."-".$post['day'];
+			// $date = $post['year']."-".$post['month']."-".$post['day'];
 			$query = "INSERT INTO qusers (first_name, alias, email, password, birthday, created_at, updated_at) VALUES (?,?,?,?,?,NOW(),NOW())";
-			$values = array($post["first"], $post["alias"], $post["email"], $post["password"], $date);
+			$values = array($post["first"], $post["alias"], $post["email"], $post["password"], $post["birthday"]);
 			$this->db->query($query, $values);
 		}
 		

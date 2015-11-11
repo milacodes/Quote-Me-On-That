@@ -10,7 +10,7 @@ class Quote extends CI_Model {
 		if ($this->form_validation->run() === FALSE) {
 			
 			$this->session->set_flashdata("error", validation_errors());
-			redirect('/quotes');
+			redirect('/quotes/show');
 		}
 		else{
 			$query = "INSERT INTO quotes (quote, quote_by, created_at, updated_at, posted_by, quser_id) VALUES (?, ?, NOW(), NOW(), ?, ?)";
