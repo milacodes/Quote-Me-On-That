@@ -1,0 +1,59 @@
+html{
+	font-family: 'Overlock', cursive;
+}
+
+body{
+	background-color: #e3f2fd;
+}
+#head{
+		margin-bottom: 25px;
+	}
+	#quotebox{
+		/*width: 200px;*/
+		padding-bottom: 3px;
+		border-bottom: 2px solid green;
+		margin-bottom: 5px;
+	}
+	#qavebox{
+		/*width: 200px;*/
+		padding-bottom: 3px;
+		border-bottom: 2px solid darkorchid;
+		margin-bottom: 5px;
+	}
+	#longbox{
+		overflow: scroll;
+		/*outline: 2px solid black;*/
+		/*padding: 2px;*/
+		/*margin-right: 3px;*/
+		/*width: 215px;*/
+		height: 610px;
+		border-right: 2px solid black;
+		padding-bottom: 5px;
+	}
+	#favebox{
+		overflow: scroll;
+		/*vertical-align: top;*/
+		/*outline: 2px solid black;*/
+		/*padding: 2px;*/
+		/*width: 215px;*/
+		height: 610px;
+		border-left: 2px solid black;
+		padding-bottom: 5px;
+	}
+	#tiny{
+		font-size: 14px;
+	}
+
+	.contribute{
+		margin-bottom: 15px;
+	}
+
+	.bigger{
+		font-size: 18px;
+	}
+
+	.logo{
+		font-size: 48px;
+		font-weight: 700;
+	}
+	

@@ -1,86 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-	<title>Quotes Page</title>
 
-	<style type="text/css">
-	#head{
-		margin-bottom: 25px;
-	}
-	#quotebox{
-		width: 200px;
-		border: 2px solid green;
-		margin-bottom: 5px;
-	}
-	#qavebox{
-		width: 200px;
-		border: 2px solid darkorchid;
-		margin-bottom: 5px;
-	}
-	#longbox{
-		overflow: scroll;
-		outline: 2px solid black;
-		padding: 2px;
-		margin-right: 3px;
-		width: 215px;
-		height: 610px;
-	}
-	#favebox{
-		vertical-align: top;
-		overflow: scroll;
-		outline: 2px solid black;
-		padding: 2px;
-		width: 215px;
-		height: 610px;
-	}
-	#tiny{
-		font-size: 12px;
-	}
-	.inline{
-		display: inline-block;
-	}
-	</style>
-</head>
-<body>
+<?= $this->load->view('templates/header.php');?>
 
-	<div id= "head">
-		<h2>Welcome, <?= $uzah['alias'] ?></h2>
-		<a href="/quotes/logout">Logout</a>
+
+	<div id= "head" class = "row">
+		<h3 class = "col s12 m8 l10">Welcome, <?= $uzah['alias'] ?></h3>
+		<a "col s12 m8 l10" href="/quotes/logout"><i class="small material-icons">exit_to_app</i>
+            Logout</a>
 	</div>	
 
-	<div id = "longbox" class = "inline">
-		<h4>Quotable Quotes</h4>
-		<?php 
-				foreach ($quos as $quo) { 
-					?>
-					<div id = "quotebox">
-						<p><?= $quo['quote_by'] ?>: <?= $quo['quote'] ?></p>
-						<span id = "tiny">Posted by <?= $quo['posted_by']?></span>
-						<button><a href="/quotes/addto/<?= $quo['id'] ?>">Add to My List</a></button>
-					</div>
-		<?php  	} ?>
+	<div class = "row">
+		<div id = "longbox" class = "col s12 m6 l6">
+			<h4>Quotable Quotes</h4>
+			<?php 
+					foreach ($quos as $quo) { 
+						?>
+						<div id = "quotebox">
+							<p class = "bigger"><b><?= $quo['quote_by'] ?></b>: "<?= $quo['quote'] ?>"</p>
+							<span id = "tiny">Posted by <?= $quo['posted_by']?></span>
+							<button><a href="/quotes/addto/<?= $quo['id'] ?>">Add to My List</a></button>
+						</div>
+			<?php  	} ?>
+		</div>
+	
+		<div id = "favebox" class = "col s12 m6 l6">
+			<h4>Your Favorites</h4>
+			<?php 
+					foreach ($faves as $fave) { 
+						// var_dump($fave); ?>
+						<div id = "qavebox">
+							<p class = "bigger"><b><?= $fave['quote_by'] ?></b>: "<?= $fave['quote'] ?>"</p>
+							<span id = "tiny">Posted by <?= $fave['posted_by']?></span>
+							<button><a href="/quotes/remove/<?= $fave['quote_id']?>">Remove From My List</a></button>
+						</div>
+			<?php  	} ?>
+		</div>
 	</div>
 
-	<div id = "favebox" class = "inline">
-		<h4>Your Favorites</h4>
-		<?php 
-				foreach ($faves as $fave) { 
-					// var_dump($fave); ?>
-					<div id = "qavebox">
-						<p><?= $fave['quote_by'] ?>: <?= $fave['quote'] ?></p>
-						<span id = "tiny">Posted by <?= $fave['posted_by']?></span>
-						<button><a href="/quotes/remove/<?= $fave['quote_id']?>">Remove From My List</a></button>
-					</div>
-		<?php  	} ?>
+
+	<div class="divider"></div>
+	<div class = "container right-align contribute">
+		<h3>Contribute a Quote:</h3>
+		<h5 class = "red-text text-darken-2"><?=  $this->session->flashdata("error")?></h5>
+		<form action = "/quotes/contribute" method = "post" class = "col s12">
+
+			<h4>Quoted By: <input type = "text" name = "quoteby"></h4>
+			<h4>Message: <textarea name = "message"></textarea></h4>
+			<input class = "waves-effect waves-blue btn-large" type = "submit" value = "Submit Quote">
+		</form>
 	</div>
 
-	<p>Contribute a Quote:</p>
-	<?=  $this->session->flashdata("error")?>
-	<form action = "/quotes/contribute" method = "post">
-		<p>Quoted By: <input type = "text" name = "quoteby"></p>
-		<p>Message: <textarea name = "message"></textarea></p>
-		<input type = "submit" value = "Submit Quote">
-	</form>
-</body>
-</html>
+
+
+<?= $this->load->view('templates/footer.php');?>
+
