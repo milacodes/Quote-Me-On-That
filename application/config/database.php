@@ -54,14 +54,14 @@ $username = $url["user"];
 $password = $url["pass"];
 $dbz = substr($url["path"], 1);
 
-// $conn = new mysqli($server, $username, $password, $db);
+// $conn = new mysqli($server, $username, $password, $dbz);
 
 
 $active_group = 'default';
 $active_record = TRUE;
 
 $db['default'] = array(
-	
+
 	'hostname' => $server,
 	'username' => $username,
 	'password' => $password,
@@ -80,10 +80,7 @@ $db['default'] = array(
 
 );
 
-// $db['default']['hostname'] = $server;
-// $db['default']['username'] = $username;
-// $db['default']['password'] = $password;
-// $db['default']['database'] = $db;
+
 // $db['default']['hostname'] = 'localhost';
 // $db['default']['username'] = 'root';
 // $db['default']['password'] = 'root';
