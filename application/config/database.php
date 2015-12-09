@@ -52,7 +52,7 @@ $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 $server = $url["host"];
 $username = $url["user"];
 $password = $url["pass"];
-$db = substr($url["path"], 1);
+$dbz = substr($url["path"], 1);
 
 // $conn = new mysqli($server, $username, $password, $db);
 
@@ -60,25 +60,45 @@ $db = substr($url["path"], 1);
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = $server;
-$db['default']['username'] = $username;
-$db['default']['password'] = $password;
-$db['default']['database'] = $db;
+$db['default'] = array(
+	
+	'hostname' => $server,
+	'username' => $username,
+	'password' => $password,
+	'database' => $dbz,
+	'dbdriver' => 'mysqli',
+	'dbprefix' => '',
+	'pconnect' => TRUE,
+	'db_debug' => TRUE,
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '',
+	'autoinit' => TRUE,
+	'stricton' => FALSE,
+
+);
+
+// $db['default']['hostname'] = $server;
+// $db['default']['username'] = $username;
+// $db['default']['password'] = $password;
+// $db['default']['database'] = $db;
 // $db['default']['hostname'] = 'localhost';
 // $db['default']['username'] = 'root';
 // $db['default']['password'] = 'root';
 // $db['default']['database'] = 'newmvc';
-$db['default']['dbdriver'] = 'mysqli';
-$db['default']['dbprefix'] = '';
-$db['default']['pconnect'] = TRUE;
-$db['default']['db_debug'] = TRUE;
-$db['default']['cache_on'] = FALSE;
-$db['default']['cachedir'] = '';
-$db['default']['char_set'] = 'utf8';
-$db['default']['dbcollat'] = 'utf8_general_ci';
-$db['default']['swap_pre'] = '';
-$db['default']['autoinit'] = TRUE;
-$db['default']['stricton'] = FALSE;
+// $db['default']['dbdriver'] = 'mysqli';
+// $db['default']['dbprefix'] = '';
+// $db['default']['pconnect'] = TRUE;
+// $db['default']['db_debug'] = TRUE;
+// $db['default']['cache_on'] = FALSE;
+// $db['default']['cachedir'] = '';
+// $db['default']['char_set'] = 'utf8';
+// $db['default']['dbcollat'] = 'utf8_general_ci';
+// $db['default']['swap_pre'] = '';
+// $db['default']['autoinit'] = TRUE;
+// $db['default']['stricton'] = FALSE;
 
 
 /* End of file database.php */
