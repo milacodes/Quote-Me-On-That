@@ -45,13 +45,29 @@
 | the active record class
 */
 
+
+//Get Heroku ClearDB connection info
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+$server = $url["host"];
+$username = $url["user"];
+$password = $url["pass"];
+$db = substr($url["path"], 1);
+
+// $conn = new mysqli($server, $username, $password, $db);
+
+
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'root';
-$db['default']['password'] = 'root';
-$db['default']['database'] = 'newmvc';
+$db['default']['hostname'] = $server;
+$db['default']['username'] = $username;
+$db['default']['password'] = $password;
+$db['default']['database'] = $db;
+// $db['default']['hostname'] = 'localhost';
+// $db['default']['username'] = 'root';
+// $db['default']['password'] = 'root';
+// $db['default']['database'] = 'newmvc';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
